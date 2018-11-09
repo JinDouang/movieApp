@@ -20,8 +20,8 @@ npm run build --report
 # build and start for application using iOS
 ./script.sh (make sure your iphone device is plugged into your MacOS)
 
-# Also verify the config.xml (same bundle identifier for the ID and on workspace Xcode's ID)
-# So your device can work perfectly
+Also verify the config.xml (same bundle identifier for the ID and on workspace Xcode's ID)
+So your device can work perfectly!
 
 
 ```
