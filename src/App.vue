@@ -6,11 +6,9 @@
       </ion-toolbar>
     </ion-header>
     <ion-content padding>
-      <h3>This is an Ionic 4 & Vue Hybrid App</h3>
-      <p>
-        We have some nice products in our <a href="https://xMobe.com">https://xMobe.com</a>, please take look.
-      </p>
-    </ion-content>
+
+      
+    
   </ion-app>
 </template>
 
