@@ -20,6 +20,9 @@ npm run build --report
 # build and start for application using iOS
 ./scriptiOS.sh (make sure your iphone device is plugged into your MacOS)
 
+You might have an error 'code Signing Error: Signing for "MovieApp"'.
+Open MovieApp.xcworkspace in the folder ios that has been created in platforms and select team.
+
 Also verify the config.xml (same bundle identifier for the ID and on workspace Xcode's ID)
 So your device can work perfectly!
 
