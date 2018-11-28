@@ -1,30 +1,30 @@
 <template>
-  <ion-app>
-    <ion-header>
-      <ion-toolbar class="primary">
-        <ion-title>Ionic 4 Vue</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content padding>
-
-      
-    
-  </ion-app>
+    <ion-app id="app">
+        <app-header></app-header>
+        <app-footer></app-footer>
+    </ion-app>
 </template>
 
+
 <script>
-export default {
-  name: 'App'
-}
+  import Footer from './components/Footer.vue';
+  import Header from './components/Header.vue';
+
+  export default {
+    name: 'App',
+    components: {
+      'app-header': Header,
+      'app-footer': Footer,
+    },
+  }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    #app {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+    }
 </style>
