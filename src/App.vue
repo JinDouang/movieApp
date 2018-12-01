@@ -1,7 +1,9 @@
 <template>
     <ion-app id="app">
         <app-header></app-header>
-        <router-view></router-view>
+        <transition name="component-fade" mode="out-in">
+            <router-view></router-view>
+        </transition>
         <app-footer></app-footer>
     </ion-app>
 </template>

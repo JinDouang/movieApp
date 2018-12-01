@@ -34,6 +34,7 @@
 
 
 <script>
+  import { serverBus } from '../main';
 
   export default {
     data () {
@@ -43,19 +44,23 @@
     },
     methods: {
       goToAbout () {
-        this.$router.go('about');
+        this.$router.push('about');
+        serverBus.$emit('titleSelected', 'About');
       },
 
       goToDiscover () {
-        this.$router.go('discover');
+        this.$router.push('discover');
+        serverBus.$emit('titleSelected', 'Discover');
       },
 
       goToNew () {
-        this.$router.go('new');
+        this.$router.push('new');
+        serverBus.$emit('titleSelected', 'New');
       },
 
       goToPopular () {
-        this.$router.go('/');
+        this.$router.push('/');
+        serverBus.$emit('titleSelected', 'Popular');
       }
 
     }

@@ -1,14 +1,28 @@
 <template>
     <ion-header>
         <ion-toolbar class="title">
-            <ion-title>MovieApp</ion-title>
+            <ion-title>{{title ? title : 'MovieApp'}}</ion-title>
         </ion-toolbar>
     </ion-header>
 </template>
 
 
 <script>
-  export default {}
+  import { serverBus } from '../main';
+
+  export default {
+    data () {
+      return {
+        title: 'Popular'
+      }
+    },
+    created() {
+      // Using the service bus
+      serverBus.$on('titleSelected', (server) => {
+        this.title = server;
+      });
+    }
+  }
 </script>
 
 <style>

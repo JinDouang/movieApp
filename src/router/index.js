@@ -12,22 +12,26 @@ export default new Router({
     {
       path: '/',
       name: 'popular',
-      component: require("@/pages/Popular.vue").default // load sync home
+      component: require("@/pages/Popular.vue").default,
+      meta: {title: 'Popular'}// load sync home
     },
     {
       path: '/new',
       name: 'new',
-      component: New
+      component: New,
+      meta: {title: 'New'}
     },
     {
       path: '/discover',
       name: 'discover',
-      component: Discover
+      component: Discover,
+      meta: {title: 'Discover'}
     },
     {
       path: '/about',
       name: 'about',
-      component: About
+      component: About,
+      meta: {title: 'About'}
     }
   ]
 })
