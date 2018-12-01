@@ -27,4 +27,8 @@
         text-align: center;
         color: #2c3e50;
     }
+
+    html {
+        background: #2224284d;
+    }
 </style>

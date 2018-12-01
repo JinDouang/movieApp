@@ -10,19 +10,19 @@
 
             <ion-fab-list side="start">
                 <ion-fab-button>
-                    <ion-icon name="logo-facebook"></ion-icon>
+                    <ion-icon name="help-circle"></ion-icon>
                 </ion-fab-button>
 
                 <ion-fab-button>
-                    <ion-icon name="logo-twitter"></ion-icon>
+                    <ion-icon name="search"></ion-icon>
                 </ion-fab-button>
 
                 <ion-fab-button>
-                    <ion-icon name="logo-vimeo"></ion-icon>
+                    <ion-icon name="videocam"></ion-icon>
                 </ion-fab-button>
 
                 <ion-fab-button>
-                    <ion-icon name="logo-instagram"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
                 </ion-fab-button>
 
             </ion-fab-list>
