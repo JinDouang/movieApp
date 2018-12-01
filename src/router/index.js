@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Discover from '@/pages/Discover.vue'
+import New from '@/pages/New.vue'
+import About from '@/pages/About.vue'
+
 
 Vue.use(Router)
 
@@ -7,23 +11,23 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Popular',
+      name: 'popular',
       component: require("@/pages/Popular.vue").default // load sync home
     },
     {
       path: '/new',
-      name: 'New',
-      component: require("@/pages/New.vue")
+      name: 'new',
+      component: New
     },
     {
       path: '/discover',
-      name: 'Discover',
-      component: require("@/pages/Discover.vue")
+      name: 'discover',
+      component: Discover
     },
     {
       path: '/about',
-      name: 'About',
-      component: require("@/pages/About.vue")
+      name: 'about',
+      component: About
     }
   ]
 })
