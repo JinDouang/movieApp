@@ -2,6 +2,8 @@
 
     <footer>
         <!--https://ionicframework.com/docs/api/components/fab/FabList/-->
+
+        <!--https://github.com/vuejs/vue-router/blob/dev/examples/transitions/index.html-->
         <!-- fab placed to the bottom end -->
         <ion-fab vertical="bottom" horizontal="end" slot="fixed">
             <ion-fab-button class="footer-button">
