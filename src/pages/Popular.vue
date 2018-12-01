@@ -7,7 +7,7 @@
             </ion-card-header>
 
             <ion-card-content>
-                This is Popular
+                This is Popular cc
             </ion-card-content>
         </ion-card>
     </ion-page>

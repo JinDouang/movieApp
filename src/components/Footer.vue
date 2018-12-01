@@ -9,19 +9,19 @@
             </ion-fab-button>
 
             <ion-fab-list side="start">
-                <ion-fab-button>
+                <ion-fab-button @click="goToAbout">
                     <ion-icon name="help-circle"></ion-icon>
                 </ion-fab-button>
 
-                <ion-fab-button>
+                <ion-fab-button @click="goToDiscover">
                     <ion-icon name="search"></ion-icon>
                 </ion-fab-button>
 
-                <ion-fab-button>
+                <ion-fab-button @click="goToNew">
                     <ion-icon name="videocam"></ion-icon>
                 </ion-fab-button>
 
-                <ion-fab-button>
+                <ion-fab-button @click="goToPopular">
                     <ion-icon name="star-outline"></ion-icon>
                 </ion-fab-button>
 
@@ -40,6 +40,21 @@
       }
     },
     methods: {
+      goToAbout () {
+        this.$router.go('about');
+      },
+
+      goToDiscover () {
+        this.$router.go('discover');
+      },
+
+      goToNew () {
+        this.$router.go('new');
+      },
+
+      goToPopular () {
+        this.$router.go('/');
+      }
 
     }
   }
