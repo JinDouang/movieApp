@@ -34,7 +34,20 @@
 
 
 <script>
-  export default {}
+  import movieService from "@/service/movieService";
+
+  export default {
+    created() {
+      movieService.getPhotos()
+        .then(response => {
+          console.log('response: ', response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    }
+  }
 </script>
 
 <style>

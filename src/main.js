@@ -3,12 +3,15 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
+import VueRouter from 'vue-router'
 
 Vue.config.productionTip = false
 Vue.config.ignoredElements = [/^ion-/]
 
 export const serverBus = new Vue();
 
+Vue.use(VueRouter, axios)
 
 /* eslint-disable no-new */
 new Vue({
