@@ -33,5 +33,6 @@
 
     html {
         background: #2224284d;
+        overflow: hidden;
     }
 </style>

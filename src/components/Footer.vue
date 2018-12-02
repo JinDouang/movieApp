@@ -5,8 +5,8 @@
 
         <!--https://github.com/vuejs/vue-router/blob/dev/examples/transitions/index.html-->
         <!-- fab placed to the bottom end -->
-        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-            <ion-fab-button class="footer-button">
+        <ion-fab class="footer-button" vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button class="menu-button">
                 <ion-icon name="arrow-dropleft"></ion-icon>
             </ion-fab-button>
 
@@ -68,8 +68,12 @@
 </script>
 
 <style>
-    .footer-button {
+    .menu-button {
         --background: black;
         --background-activated: black;
+    }
+
+    .footer-button {
+        position: fixed;
     }
 </style>
