@@ -1,35 +1,33 @@
 <template>
-    <ion-page class="show-page">
-        <ion-content class="content">
-            <ion-grid>
-                <ion-row>
+    <ion-content class="content">
 
-                    <ion-col class="col">
-                        <ion-card class="movie-info">
-                            <ion-card-title  class="card-title">
-                                Test
-                            </ion-card-title>
-                            <img src="https://placeimg.com/500/750/any"/>
-                            <div class="card-subtitle">
-                                <ion-row>
-                                    <ion-col>
-                                        <ion-icon name="star"></ion-icon>
-                                        <div>9.4</div>
-                                    </ion-col>
-                                    <ion-col>
-                                        <ion-icon name="calendar"></ion-icon>
-                                        <div>1995</div>
-                                    </ion-col>
-                                </ion-row>
-                            </div>
-                        </ion-card>
-                    </ion-col>
+        <ion-grid>
+            <ion-row>
 
+                <ion-col class="col">
+                    <ion-card class="movie-info">
+                        <ion-card-title class="card-title">
+                            Test
+                        </ion-card-title>
+                        <img src="https://placeimg.com/500/750/any" />
+                        <div class="card-subtitle">
+                            <ion-row>
+                                <ion-col>
+                                    <ion-icon name="star"></ion-icon>
+                                    <div>9.4</div>
+                                </ion-col>
+                                <ion-col>
+                                    <ion-icon name="calendar"></ion-icon>
+                                    <div>1995</div>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
 
-                </ion-row>
-            </ion-grid>
-        </ion-content>
-    </ion-page>
+    </ion-content>
 </template>
 
 
@@ -37,7 +35,7 @@
   import movieService from "@/service/movieService";
 
   export default {
-    created() {
+    created () {
       movieService.getPhotos()
         .then(response => {
           console.log('response: ', response);
@@ -52,14 +50,11 @@
 
 <style>
     .content {
-        --offset-top: 0px !important;
-        --offset-bottom: 544px !important;
+        position: absolute;
         --background: #22242800;
     }
 
-
-
-    .card-title{
+    .card-title {
         font-size: 1.5em;
         width: 100%;
         font-weight: bold;
@@ -71,7 +66,7 @@
         position: absolute;
         bottom: 10px;
         width: 100%;
-        color:#ecf0f1;
+        color: #ecf0f1;
     }
 
     .col {
