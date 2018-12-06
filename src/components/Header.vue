@@ -27,6 +27,7 @@
 
 <style>
     .title {
-       --background: #f4f5f8a8;
+        --background: #f4f5f812;
+        color: white;
     }
 </style>

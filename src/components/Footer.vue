@@ -69,8 +69,8 @@
 
 <style>
     .menu-button {
-        --background: black;
-        --background-activated: black;
+        --background: #cc0066;
+        --background-activated: #cc0066;
     }
 
     .footer-button {
