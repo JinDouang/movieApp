@@ -1,6 +1,6 @@
 <template>
     <ion-header>
-        <ion-toolbar class="title">
+        <ion-toolbar fullscreen class="title">
             <ion-title>{{title ? title : 'MovieApp'}}</ion-title>
         </ion-toolbar>
     </ion-header>

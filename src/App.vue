@@ -34,4 +34,8 @@
         background: #1a1a33;
         overflow: hidden;
     }
+
+    body {
+        margin: 0;
+    }
 </style>
