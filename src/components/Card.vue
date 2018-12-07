@@ -1,32 +1,41 @@
 <template>
-    <ion-grid>
-        <ion-row>
-            <ion-col class="col">
-                <ion-card class="movie-info">
-                    <ion-card-title class="card-title">{{ title }}</ion-card-title>
-                    <img src="https://placeimg.com/500/750/any" />
-                    <div class="card-subtitle">
-                        <ion-row>
-                            <ion-col>
-                                <ion-icon name="star"></ion-icon>
-                                <div class="description">9.4</div>
-                            </ion-col>
-                            <ion-col>
-                                <ion-icon name="calendar"></ion-icon>
-                                <div class="description">1995</div>
-                            </ion-col>
-                        </ion-row>
-                    </div>
-                </ion-card>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <ion-col class="col">
+        <ion-card class="movie-info">
+            <img :src="imgUrl + img" />
+            <div class="card-subtitle">
+                <ion-row>
+                    <ion-col>
+                        <ion-icon name="star"></ion-icon>
+                        <div class="description">{{ star }}</div>
+                    </ion-col>
+                    <ion-col>
+                        <ion-icon name="calendar"></ion-icon>
+                        <div class="description">{{ date | formatDate}}</div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-card>
+    </ion-col>
 </template>
 
 
 <script>
+  import moment from 'moment'
+
   export default {
-    props: ['title'],
+    filters: {
+      formatDate: function (value) {
+        if (value) {
+          return moment(String(value)).format('Y')
+        }
+      }
+    },
+    props: ['star', 'date', 'img'],
+    data () {
+      return {
+        imgUrl: 'https://image.tmdb.org/t/p/w500'
+      }
+    }
 
   }
 </script>

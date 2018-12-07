@@ -1,7 +1,15 @@
 <template>
-
     <ion-content class="content">
-        <card title="coucou"></card>
+        <ion-grid>
+            <ion-row>
+                <card v-for="(item, index) in items"
+                      :key="index"
+                      :img="item.poster_path"
+                      :star="item.vote_average"
+                      :date="item.release_date">
+                </card>
+            </ion-row>
+        </ion-grid>
     </ion-content>
 </template>
 
@@ -14,10 +22,15 @@
     components: {
       'card': Card,
     },
+    data () {
+      return {
+        items: Array
+      }
+    },
     created () {
       movieService.getPopularMovies()
         .then(response => {
-          console.log('response: ', response);
+          this.items = response.data.results;
         })
         .catch((err) => {
           console.log(err);

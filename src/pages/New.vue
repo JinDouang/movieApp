@@ -1,29 +1,36 @@
 <template>
-    <ion-page class="show-page">
-        <ion-content class="content">
-            <ion-card class="card">
-                <ion-card-header>
-                    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                    <ion-card-title>Card Title</ion-card-title>
-                </ion-card-header>
-
-                <ion-card-content>
-                    This is New
-                </ion-card-content>
-            </ion-card>
-        </ion-content>
-    </ion-page>
+    <ion-content class="content">
+        <ion-grid>
+            <ion-row>
+                <card v-for="(item, index) in items"
+                      :key="index"
+                      :img="item.poster_path"
+                      :star="item.vote_average"
+                      :date="item.release_date">
+                </card>
+            </ion-row>
+        </ion-grid>
+    </ion-content>
 </template>
 
 
 <script>
   import movieService from "@/service/movieService";
+  import Card from '../components/Card.vue';
 
   export default {
+    components: {
+      'card': Card,
+    },
+    data () {
+      return {
+        items: Array
+      }
+    },
     created () {
       movieService.getUpcomingMovies()
         .then(response => {
-          console.log('response: ', response);
+          this.items = response.data.results;
         })
         .catch((err) => {
           console.log(err);
