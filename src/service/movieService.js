@@ -1,21 +1,15 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
-
-// var apiKey: 'c8be6249eee95a0f11ff43fd837eb9cc';
+let apiKey = 'c8be6249eee95a0f11ff43fd837eb9cc';
 
 export default {
-
-  getPosts() {
-    return axios.get("/posts");
+  getPopularMovies() {
+    return axios.get(`/movie/popular?api_key=${apiKey}&page=1`);
   },
 
-  getPost(id) {
-    return axios.get("/posts/" + id);
+  getUpcomingMovies() {
+    return axios.get(`/movie/upcoming?api_key=${apiKey}&page=1`);
   },
-
-  getPhotos() {
-    return axios.get("/photos");
-  }
 
 };

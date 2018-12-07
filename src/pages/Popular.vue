@@ -36,7 +36,7 @@
 
   export default {
     created () {
-      movieService.getPhotos()
+      movieService.getPopularMovies()
         .then(response => {
           console.log('response: ', response);
         })

@@ -17,7 +17,20 @@
 
 
 <script>
-  export default {}
+  import movieService from "@/service/movieService";
+
+  export default {
+    created () {
+      movieService.getUpcomingMovies()
+        .then(response => {
+          console.log('response: ', response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    }
+  }
 </script>
 
 <style>
