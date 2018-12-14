@@ -5,11 +5,11 @@ let apiKey = 'c8be6249eee95a0f11ff43fd837eb9cc';
 
 export default {
   getPopularMovies(pageNb) {
-    return axios.get(`/movie/popular?api_key=${apiKey}&page=${pageNb}`);
+    return axios.get(`/movie/top_rated?api_key=${apiKey}&page=${pageNb}`);
   },
 
-  getUpcomingMovies() {
-    return axios.get(`/movie/upcoming?api_key=${apiKey}&page=1`);
+  getUpcomingMovies(pageNb) {
+    return axios.get(`/movie/upcoming?api_key=${apiKey}&page=${pageNb}`);
   },
 
 };
