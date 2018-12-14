@@ -40,6 +40,7 @@
     },
     methods: {
       change($event) {
+        this.items = [];
         this.page = 1;
         this.keyword = $event.target.value;
         this.searchMovies(this.keyword, this.page);
