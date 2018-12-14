@@ -34,15 +34,18 @@
         page: 1
       }
     },
-    created () {
+    mounted () {
       this.getUpcomingMovies(this.page);
     },
     methods: {
       loadPage($event) {
-        this.page = this.page + 1;
-        this.getUpcomingMovies(this.page);
-        $event.target.complete();
+        setTimeout(() => {
+          this.page = this.page + 1;
+          this.getUpcomingMovies(this.page);
+          $event.target.complete();
+        }, 500);
       },
+
 
       getUpcomingMovies(page) {
         movieService.getUpcomingMovies(page)

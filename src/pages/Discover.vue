@@ -1,7 +1,6 @@
 <template>
         <ion-content class="content">
-
-            <ion-searchbar type></ion-searchbar>
+            <ion-searchbar type @change="change"></ion-searchbar>
             <ion-grid>
                 <ion-row>
                     <card v-for="(item, index) in items"
@@ -11,12 +10,14 @@
                           :date="item.release_date">
                     </card>
                 </ion-row>
+
                 <ion-infinite-scroll @ionInfinite="loadPage($event)">
                     <ion-infinite-scroll-content
                             loadingSpinner="bubbles"
                             loadingText="Loading more data...">
                     </ion-infinite-scroll-content>
                 </ion-infinite-scroll>
+
             </ion-grid>
         </ion-content>
 </template>
@@ -33,21 +34,27 @@
     data () {
       return {
         items: [],
-        page: 1
+        page: 1,
+        keyword: ''
       }
     },
-    created () {
-      this.getUpcomingMovies(this.page);
-    },
     methods: {
+      change($event) {
+        this.page = 1;
+        this.keyword = $event.target.value;
+        this.searchMovies(this.keyword, this.page);
+      },
       loadPage($event) {
-        this.page = this.page + 1;
-        this.getUpcomingMovies(this.page);
-        $event.target.complete();
+        setTimeout(() => {
+          this.page = this.page + 1;
+          this.searchMovies(this.keyword, this.page);
+          $event.target.complete();
+        }, 500);
       },
 
-      getUpcomingMovies(page) {
-        movieService.getUpcomingMovies(page)
+
+      searchMovies(keyword, page) {
+        movieService.searchMovie(keyword, page)
           .then(response => {
             for (let i = 0; i < response.data.results.length; i++) {
               this.items.push(response.data.results[i]);

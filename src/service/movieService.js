@@ -7,12 +7,13 @@ export default {
   getPopularMovies(pageNb) {
     return axios.get(`/movie/popular?api_key=${apiKey}&page=${pageNb}`);
   },
-
   getUpcomingMovies(pageNb) {
     return axios.get(`/movie/upcoming?api_key=${apiKey}&page=${pageNb}`);
   },
-
   getTopRatedMovies(pageNb) {
     return axios.get(`/movie/top_rated?api_key=${apiKey}&page=${pageNb}`);
   },
+  searchMovie(keyword, pageNb) {
+    return axios.get(`/search/movie?api_key=${apiKey}&query=${keyword}&page=${pageNb}`);
+  }
 };

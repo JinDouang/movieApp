@@ -34,14 +34,16 @@
         page: 1
       }
     },
-    created () {
+    mounted () {
       this.getTopRatedMovies(this.page);
     },
     methods: {
       loadPage($event) {
-        this.page = this.page + 1;
-        this.getTopRatedMovies(this.page);
-        $event.target.complete();
+        setTimeout(() => {
+          this.page = this.page + 1;
+          this.getTopRatedMovies(this.page);
+          $event.target.complete();
+        }, 500);
       },
 
       getTopRatedMovies(page) {
