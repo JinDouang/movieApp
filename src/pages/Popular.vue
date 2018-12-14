@@ -9,6 +9,12 @@
                       :date="item.release_date">
                 </card>
             </ion-row>
+            <ion-infinite-scroll @ionInfinite="loadPage($event)">
+                <ion-infinite-scroll-content
+                        loadingSpinner="bubbles"
+                        loadingText="Loading more data...">
+                </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
         </ion-grid>
     </ion-content>
 </template>
@@ -24,18 +30,31 @@
     },
     data () {
       return {
-        items: Array
+        items: [],
+        page: 1
       }
     },
     created () {
-      movieService.getPopularMovies()
-        .then(response => {
-          this.items = response.data.results;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      this.getPopularMovies(this.page);
+    },
+    methods: {
+      loadPage($event) {
+        this.page = this.page + 1;
+        this.getPopularMovies(this.page);
+        $event.target.complete();
+      },
 
+      getPopularMovies(page) {
+        movieService.getPopularMovies(page)
+          .then(response => {
+            for (let i = 0; i < response.data.results.length; i++) {
+              this.items.push(response.data.results[i]);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
     }
   }
 </script>
