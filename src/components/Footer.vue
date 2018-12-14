@@ -9,16 +9,16 @@
         </ion-fab-button>
 
         <ion-fab-list side="start">
-            <ion-fab-button @click="goToAbout">
-                <ion-icon name="help-circle"></ion-icon>
-            </ion-fab-button>
-
             <ion-fab-button @click="goToDiscover">
                 <ion-icon name="search"></ion-icon>
             </ion-fab-button>
 
             <ion-fab-button @click="goToNew">
                 <ion-icon name="videocam"></ion-icon>
+            </ion-fab-button>
+
+            <ion-fab-button @click="goToTop">
+                <ion-icon name="pulse"></ion-icon>
             </ion-fab-button>
 
             <ion-fab-button @click="goToPopular">
@@ -38,9 +38,9 @@
       return {}
     },
     methods: {
-      goToAbout () {
-        this.$router.push('about');
-        serverBus.$emit('titleSelected', 'About');
+      goToTop () {
+        this.$router.push('top');
+        serverBus.$emit('titleSelected', 'Top Rated');
       },
 
       goToDiscover () {
