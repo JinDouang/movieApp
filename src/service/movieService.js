@@ -15,5 +15,8 @@ export default {
   },
   searchMovie(keyword, pageNb) {
     return axios.get(`/search/movie?api_key=${apiKey}&query=${keyword}&page=${pageNb}`);
+  },
+  getMovieDetail(id) {
+    return axios.get(`/movie/${id}?api_key=${apiKey}&append_to_response=videos`);
   }
 };

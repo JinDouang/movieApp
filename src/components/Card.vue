@@ -1,6 +1,6 @@
 <template>
     <ion-col class="col">
-        <ion-card class="movie-info" @click="showModal">
+        <ion-card class="movie-info" @click="showModal(id)">
             <img :src="imgUrl + img" />
             <div class="card-subtitle">
                 <ion-row>
@@ -21,6 +21,7 @@
 
 <script>
   import modal from './MovieModal.vue';
+  import { serverBus } from '../main';
   import moment from 'moment'
 
   export default {
@@ -34,7 +35,7 @@
     components: {
       modal,
     },
-    props: ['star', 'date', 'img'],
+    props: ['star', 'date', 'img', 'id'],
     data () {
       return {
         isModalVisible: false,
@@ -42,7 +43,8 @@
       }
     },
     methods: {
-      showModal() {
+      showModal(id) {
+        serverBus.$emit('movieDetail', id);
         this.isModalVisible = true;
       },
       closeModal() {

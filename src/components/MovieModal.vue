@@ -24,8 +24,15 @@
     </transition>
 </template>
 <script>
+  import { serverBus } from '../main';
+
   export default {
     name: 'modal',
+    mounted() {
+      serverBus.$on('movieDetail', (id) => {
+        console.log('coucou: ', id);
+      });
+    },
     methods: {
       close () {
         this.$emit('close');

@@ -3,6 +3,7 @@
         <ion-grid>
             <ion-row>
                 <card v-for="(item, index) in items"
+                      :id="item.id"
                       :key="index"
                       :img="item.poster_path"
                       :star="item.vote_average"
