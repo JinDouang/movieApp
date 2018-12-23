@@ -15,7 +15,7 @@
                 </ion-row>
             </div>
         </ion-card>
-        <modal v-show="isModalVisible" @close="closeModal" />
+        <modal :id="id" v-show="isModalVisible === id" @close="closeModal" />
     </ion-col>
 </template>
 
@@ -45,10 +45,10 @@
     methods: {
       showModal(id) {
         serverBus.$emit('movieDetail', id);
-        this.isModalVisible = true;
+        this.isModalVisible = id;
       },
       closeModal() {
-        this.isModalVisible = false;
+        this.isModalVisible = null;
       }
     }
 

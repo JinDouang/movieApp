@@ -25,17 +25,31 @@
 </template>
 <script>
   import { serverBus } from '../main';
+  import movieService from "@/service/movieService";
+
 
   export default {
     name: 'modal',
+    props: ['id'],
     mounted() {
       serverBus.$on('movieDetail', (id) => {
-        console.log('coucou: ', id);
+        if (this.id === id) {
+          this.getMovieDetail(id);
+        }
       });
     },
     methods: {
       close () {
         this.$emit('close');
+      },
+      getMovieDetail(id) {
+        movieService.getMovieDetail(id)
+          .then(response => {
+            console.log('response: ', response);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       },
     },
   };
