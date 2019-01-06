@@ -3,22 +3,52 @@
         <div class="modal-backdrop">
             <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
                 <header class="modal-header" id="modalTitle">
-                    <slot name="header">
-                        This is the default tile!
-                        <button type="button" class="btn-close" @click="close" aria-label="Close modal">x</button>
-                    </slot>
+                    <img :src="imgUrl + item.backdrop_path" />
+                    <button type="button" class="modal-header-close" @click="close" aria-label="Close modal">
+                        <ion-icon name="close"></ion-icon>
+                    </button>
                 </header>
                 <section class="modal-body" id="modalDescription">
-                    <slot name="body">
-                        I'm the default body!
-                    </slot>
+                    <div class="modal-body-genre">
+                        <ion-badge v-for="(genre, index) in item.genres" :key="index" v-if="index <= 3">
+                            {{genre.name}}
+                        </ion-badge>
+                    </div>
+
+                    <div class="modal-body-company">
+                        <ion-badge v-for="(company, index) in item.production_companies" :key="index" v-if="index <= 3">
+                            {{company.name}}
+                        </ion-badge>
+                    </div>
+
+                    <ion-row class="modal-body-vote">
+                        <ion-col>
+                            <button ion-button clear small color="danger" icon-start>
+                                <ion-icon name='star'></ion-icon>
+                                {{item.vote_average}}
+                            </button>
+                        </ion-col>
+                        <ion-col text-center>
+                            <button ion-button clear small color="danger" icon-start>
+                                <ion-icon name='calendar'></ion-icon>
+                                {{item.release_date}}
+                            </button>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-card-content>
+                        {{item.overview}}
+                    </ion-card-content>
+
+                    <ion-row class="modal-body-trailer">
+                        <ion-col text-right>
+                            <ion-button class="modal-body-trailer-button" color="light" :href="youtubeLink">
+                                <ion-icon name='share-alt'></ion-icon>
+                                Watch Trailer
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
                 </section>
-                <footer class="modal-footer">
-                    <slot name="footer">
-                        I'm the default footer!
-                        <button type="button" class="btn-green" @click="close" aria-label="Close modal">Close me!</button>
-                    </slot>
-                </footer>
             </div>
         </div>
     </transition>
@@ -31,6 +61,13 @@
   export default {
     name: 'modal',
     props: ['id'],
+    data () {
+      return {
+        item: '',
+        imgUrl: 'https://image.tmdb.org/t/p/w500',
+        youtubeLink: 'https://www.youtube.com/watch?v='
+      }
+    },
     mounted() {
       serverBus.$on('movieDetail', (id) => {
         if (this.id === id) {
@@ -42,10 +79,16 @@
       close () {
         this.$emit('close');
       },
+      test() {
+       console.log('ok');
+      },
       getMovieDetail(id) {
         movieService.getMovieDetail(id)
           .then(response => {
-            console.log('response: ', response);
+            this.item = response.data;
+            this.youtubeLink = 'https://www.youtube.com/watch?v=' + this.item.videos.results[0].key;
+
+            console.log('item: ', this.item);
           })
           .catch((err) => {
             console.log(err);
@@ -54,7 +97,8 @@
     },
   };
 </script>
-<style>
+<style lang="scss">
+
     .modal-backdrop {
         z-index: 99;
         position: fixed;
@@ -69,6 +113,8 @@
     }
 
     .modal {
+        width: 300px;
+        height: 400px;
         background: #ffffff;
         box-shadow: 2px 2px 20px 1px;
         overflow-x: auto;
@@ -76,26 +122,56 @@
         flex-direction: column;
     }
 
-    .modal-header,
-    .modal-footer {
-        padding: 15px;
-        display: flex;
-    }
-
     .modal-header {
-        border-bottom: 1px solid #eeeeee;
         color: #4aae9b;
         justify-content: space-between;
+        max-height: 170px;
+        img {
+            width: 300px;
+        }
+        &-close {
+            position: absolute;
+            top: 130px;
+            right: 30px;
+            ion-icon {
+                font-size: 30px;
+                color: white;
+            }
+        }
+    }
+
+    .modal-body {
+        position: relative;
+        ion-badge {
+            margin: 0 5px;
+        }
+        &-genre {
+            ion-badge {
+                --background: #62728e;
+            }
+        }
+        &-company {
+            ion-badge {
+                --background: #8a8c8e;
+            }
+        }
+        &-vote {
+            button {
+                font-size: 14px;
+            }
+        }
+        &-trailer {
+            &-button {
+                color: red;
+            }
+        }
     }
 
     .modal-footer {
         border-top: 1px solid #eeeeee;
         justify-content: flex-end;
-    }
-
-    .modal-body {
-        position: relative;
-        padding: 20px 10px;
+        padding: 15px;
+        display: flex;
     }
 
     .btn-close {
@@ -108,6 +184,7 @@
         background: transparent;
     }
 
+    // Animation
     .modal-fade-enter,
     .modal-fade-leave-active {
         opacity: 0;
