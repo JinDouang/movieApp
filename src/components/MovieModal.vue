@@ -98,7 +98,6 @@
   };
 </script>
 <style lang="scss">
-
     .modal-backdrop {
         z-index: 99;
         position: fixed;
@@ -110,6 +109,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    button {
+        background-color: transparent;
+        border: transparent;
     }
 
     .modal {
