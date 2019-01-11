@@ -1,16 +1,16 @@
 <template>
-    <ion-col class="col">
-        <ion-card class="movie-info" @click="showModal(id)">
+    <ion-col class="comp-card">
+        <ion-card class="comp-card-movie" @click="showModal(id)">
             <img :src="imgUrl + img" />
-            <div class="card-subtitle">
+            <div class="comp-card-movie-subtitle">
                 <ion-row>
                     <ion-col>
                         <ion-icon name="star"></ion-icon>
-                        <div class="description">{{ star }}</div>
+                        <div class="comp-card-movie-description">{{ star }}</div>
                     </ion-col>
                     <ion-col>
                         <ion-icon name="calendar"></ion-icon>
-                        <div class="description">{{ date | formatDate}}</div>
+                        <div class="comp-card-movie-description">{{ date | formatDate}}</div>
                     </ion-col>
                 </ion-row>
             </div>
@@ -55,21 +55,22 @@
   }
 </script>
 
-<style>
-    .card-subtitle {
-        font-size: 1.0em;
-        position: absolute;
-        bottom: 10px;
-        width: 100%;
-        color: #ecf0f1;
-    }
-
-    .col {
+<style lang="scss">
+    .comp-card {
         flex: 0 0 50%;
-    }
+        &-movie {
+            &-subtitle {
+                font-size: 1.0em;
+                position: absolute;
+                bottom: 10px;
+                width: 100%;
+                color: #ecf0f1;
+            }
 
-    .description {
-        font-weight: bolder;
-        color: white;
+            &-description {
+                font-weight: bolder;
+                color: white;
+            }
+        }
     }
 </style>
