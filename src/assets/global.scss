@@ -1,0 +1,11 @@
+@import 'mixins';
+
+html {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  text-align: center;
+  background: $purple;
+}
+
+body {
+  margin: 0;
+}

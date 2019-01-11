@@ -1,7 +1,7 @@
 <template>
-    <ion-app id="app">
+    <ion-app>
         <app-header></app-header>
-        <transition name="component-fade" mode="out-in">
+        <transition>
             <router-view></router-view>
         </transition>
         <app-footer></app-footer>
@@ -22,20 +22,6 @@
   }
 </script>
 
-<style>
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-    }
-
-    html {
-        background: #1a1a33;
-        overflow: hidden;
-    }
-
-    body {
-        margin: 0;
-    }
+<style lang="scss">
+    @import 'assets/global.scss';
 </style>
