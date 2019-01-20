@@ -1,5 +1,5 @@
 <template>
-    <ion-content class="content">
+    <ion-content class="view-page">
         <ion-grid>
             <ion-row>
                 <card v-for="(item, index) in items"
@@ -63,9 +63,6 @@
   }
 </script>
 
-<style>
-    .content {
-        position: absolute;
-        --background: #22242800;
-    }
+<style lang="scss">
+    @import '../assets/page.scss';
 </style>

@@ -1,8 +1,9 @@
 <template>
-    <ion-content class="content">
+    <ion-content class="view-page">
         <ion-grid>
             <ion-row>
-                <card v-for="(item, index) in items"
+                <card class="view-new-card"
+                      v-for="(item, index) in items"
                       :id="item.id"
                       :key="index"
                       :img="item.poster_path"
@@ -63,14 +64,6 @@
   }
 </script>
 
-<style>
-    .card {
-        --background: white;
-    }
-
-    .content {
-        --offset-top: 0px !important;
-        --offset-bottom: 544px !important;
-        --background: #22242800;
-    }
+<style lang="scss">
+    @import '../assets/page.scss';
 </style>

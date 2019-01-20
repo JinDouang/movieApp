@@ -79,7 +79,7 @@
         --offset-bottom: 544px !important;
         --background: $background-view;
 
-        &-card, .searchbar-input-container {
+        .searchbar-input-container {
             background: $white;
         }
     }
