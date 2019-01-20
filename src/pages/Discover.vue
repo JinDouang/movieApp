@@ -1,9 +1,10 @@
 <template>
-        <ion-content class="content">
-            <ion-searchbar type @change="change"></ion-searchbar>
+        <ion-content class="view-discover">
+            <ion-searchbar class="view-discover-searchBar" type @change="change"></ion-searchbar>
             <ion-grid>
                 <ion-row>
-                    <card v-for="(item, index) in items"
+                    <card class="view-discover-card"
+                          v-for="(item, index) in items"
                           :id="item.id"
                           :key="index"
                           :img="item.poster_path"
@@ -70,14 +71,16 @@
   }
 </script>
 
-<style>
-    .card {
-        --background: white;
-    }
+<style lang="scss">
+    @import '../assets/global.scss';
 
-    .content {
+    .view-discover {
         --offset-top: 0px !important;
         --offset-bottom: 544px !important;
-        --background: #22242800;
+        --background: $background-view;
+
+        &-card, .searchbar-input-container {
+            background: $white;
+        }
     }
 </style>
