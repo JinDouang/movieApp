@@ -1,6 +1,6 @@
 <template>
     <ion-header>
-        <ion-toolbar fullscreen class="title">
+        <ion-toolbar fullscreen class="comp-header">
             <ion-title>{{title ? title : 'MovieApp'}}</ion-title>
         </ion-toolbar>
     </ion-header>
@@ -25,8 +25,8 @@
   }
 </script>
 
-<style>
-    .title {
+<style lang="scss">
+    .comp-header {
         --background: #f4f5f812;
         color: white;
     }
