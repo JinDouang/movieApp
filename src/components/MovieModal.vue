@@ -119,6 +119,7 @@
     .modal {
         width: 300px;
         height: 400px;
+        position: relative;
         background: #ffffff;
         box-shadow: 2px 2px 20px 1px;
         overflow-x: auto;
@@ -135,8 +136,8 @@
         }
         &-close {
             position: absolute;
-            top: 130px;
-            right: 30px;
+            top: -5px;
+            right: -5px;
             ion-icon {
                 font-size: 30px;
                 color: white;
