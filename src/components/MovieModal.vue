@@ -135,6 +135,8 @@
                     top: -5px;
                     right: -5px;
                     ion-icon {
+                        border: 2px solid rgba(146, 137, 137, 0.82);
+                        border-radius: 25px;
                         font-size: $title-size;
                         color: $white;
                     }
