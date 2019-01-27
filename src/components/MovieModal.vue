@@ -1,27 +1,29 @@
 <template>
     <transition name="modal-fade">
-        <div class="modal-backdrop">
-            <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-                <header class="modal-header" id="modalTitle">
+        <div class="comp-modal">
+            <div class="comp-modal-container" role="dialog" aria-labelledby="modalTitle"
+                 aria-describedby="modalDescription">
+                <header class="comp-modal-container-header" id="modalTitle">
                     <img :src="imgUrl + item.backdrop_path" />
-                    <button type="button" class="modal-header-close" @click="close" aria-label="Close modal">
+                    <button type="button" class="comp-modal-container-header-close" @click="close"
+                            aria-label="Close modal">
                         <ion-icon name="close"></ion-icon>
                     </button>
                 </header>
-                <section class="modal-body" id="modalDescription">
-                    <div class="modal-body-genre">
+                <section class="comp-modal-container-body" id="modalDescription">
+                    <div class="comp-modal-container-body-genre">
                         <ion-badge v-for="(genre, index) in item.genres" :key="index" v-if="index <= 3">
                             {{genre.name}}
                         </ion-badge>
                     </div>
 
-                    <div class="modal-body-company">
+                    <div class="comp-modal-container-body-company">
                         <ion-badge v-for="(company, index) in item.production_companies" :key="index" v-if="index <= 3">
                             {{company.name}}
                         </ion-badge>
                     </div>
 
-                    <ion-row class="modal-body-vote">
+                    <ion-row class="comp-modal-container-body-vote">
                         <ion-col>
                             <button ion-button clear small color="danger" icon-start>
                                 <ion-icon name='star'></ion-icon>
@@ -40,9 +42,10 @@
                         {{item.overview}}
                     </ion-card-content>
 
-                    <ion-row class="modal-body-trailer">
+                    <ion-row class="comp-modal-container-body-trailer">
                         <ion-col text-right>
-                            <ion-button class="modal-body-trailer-button" color="light" :href="youtubeLink">
+                            <ion-button class="comp-modal-container-body-trailer-button" color="light"
+                                        :href="youtubeLink">
                                 <ion-icon name='share-alt'></ion-icon>
                                 Watch Trailer
                             </ion-button>
@@ -57,7 +60,6 @@
   import { serverBus } from '../main';
   import movieService from "@/service/movieService";
 
-
   export default {
     name: 'modal',
     props: ['id'],
@@ -68,7 +70,7 @@
         youtubeLink: 'https://www.youtube.com/watch?v='
       }
     },
-    mounted() {
+    mounted () {
       serverBus.$on('movieDetail', (id) => {
         if (this.id === id) {
           this.getMovieDetail(id);
@@ -79,10 +81,10 @@
       close () {
         this.$emit('close');
       },
-      test() {
-       console.log('ok');
+      test () {
+        console.log('ok');
       },
-      getMovieDetail(id) {
+      getMovieDetail (id) {
         movieService.getMovieDetail(id)
           .then(response => {
             this.item = response.data;
@@ -98,7 +100,11 @@
   };
 </script>
 <style lang="scss">
-    .modal-backdrop {
+    @import '../assets/mixins.scss';
+
+    $width-size: 300px;
+    $height-size: 400px;
+    .comp-modal {
         z-index: 99;
         position: fixed;
         top: 0;
@@ -109,84 +115,58 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    button {
-        background-color: transparent;
-        border: transparent;
-    }
-
-    .modal {
-        width: 300px;
-        height: 400px;
-        position: relative;
-        background: #ffffff;
-        box-shadow: 2px 2px 20px 1px;
-        overflow-x: auto;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .modal-header {
-        color: #4aae9b;
-        justify-content: space-between;
-        max-height: 170px;
-        img {
-            width: 300px;
-        }
-        &-close {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            ion-icon {
-                font-size: 30px;
-                color: white;
+        &-container {
+            width: $width-size;
+            height: $height-size;
+            position: relative;
+            background: $white;
+            box-shadow: 2px 2px 20px 1px;
+            overflow-x: auto;
+            display: flex;
+            flex-direction: column;
+            &-header {
+                justify-content: space-between;
+                max-height: 170px;
+                img {
+                    width: $width-size;
+                }
+                &-close {
+                    position: absolute;
+                    top: -5px;
+                    right: -5px;
+                    ion-icon {
+                        font-size: $title-size;
+                        color: $white;
+                    }
+                }
+            }
+            &-body {
+                position: relative;
+                ion-badge {
+                    margin: 0 $spacing-XXS;
+                }
+                &-genre {
+                    ion-badge {
+                        --background: #62728e;
+                    }
+                }
+                &-company {
+                    ion-badge {
+                        --background: #8a8c8e;
+                    }
+                }
+                &-vote {
+                    button {
+                        font-size: $body-size;
+                    }
+                }
+                &-trailer {
+                    &-button {
+                        color: $red;
+                    }
+                }
             }
         }
-    }
-
-    .modal-body {
-        position: relative;
-        ion-badge {
-            margin: 0 5px;
-        }
-        &-genre {
-            ion-badge {
-                --background: #62728e;
-            }
-        }
-        &-company {
-            ion-badge {
-                --background: #8a8c8e;
-            }
-        }
-        &-vote {
-            button {
-                font-size: 14px;
-            }
-        }
-        &-trailer {
-            &-button {
-                color: red;
-            }
-        }
-    }
-
-    .modal-footer {
-        border-top: 1px solid #eeeeee;
-        justify-content: flex-end;
-        padding: 15px;
-        display: flex;
-    }
-
-    .btn-close {
-        border: none;
-        font-size: 20px;
-        padding: 20px;
-        cursor: pointer;
-        font-weight: bold;
-        color: #4aae9b;
-        background: transparent;
     }
 
     // Animation

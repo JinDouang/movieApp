@@ -56,20 +56,22 @@
 </script>
 
 <style lang="scss">
+    @import '../assets/mixins.scss';
+
     .comp-card {
         flex: 0 0 50%;
         &-movie {
             &-subtitle {
                 font-size: 1.0em;
                 position: absolute;
-                bottom: 10px;
+                bottom: $spacing-XLXS;
                 width: 100%;
-                color: #ecf0f1;
+                color: $grey;
             }
 
             &-description {
                 font-weight: bolder;
-                color: white;
+                color: $white;
             }
         }
     }

@@ -26,8 +26,10 @@
 </script>
 
 <style lang="scss">
+    @import '../assets/mixins.scss';
+
     .comp-header {
         --background: #f4f5f812;
-        color: white;
+        color: $white;
     }
 </style>
