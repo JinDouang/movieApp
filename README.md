@@ -2,6 +2,19 @@
 
 > A Vue.js project using Ionic 4 and cordova for making a small movie app
 
+# To know
+
+Some ionic element might not be working at all so I had to use some tricks in order to make my ionic elements working
+There will soon have an official release of ionic-vueJs.
+In the meantime, you can use this project as a "beginning" if you want to interact vueJS using ionic and cordova.
+
+This project is split with pages and components
+
+- Each page has different component and logical (using props)
+- clear scss architecture used for each component and view
+- a router and API service
+
+
 ## Build Setup
 
 ``` bash
@@ -29,4 +42,16 @@ Open MovieApp.xcworkspace in the folder ios that has been created in platforms a
 Also verify the config.xml (same bundle identifier for the ID and on workspace Xcode's ID)
 So your device can work perfectly!
 
+```
+
+### Usage of service ionic/VueJS
+```javascript
+export default {
+  getPopularMovies(pageNb) {
+    return axios.get(`/movie/popular?api_key=${apiKey}&page=${pageNb}`);
+  },
+  getMovieDetail(id) {
+    return axios.get(`/movie/${id}?api_key=${apiKey}&append_to_response=videos`);
+  }
+};
 ```
