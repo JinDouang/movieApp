@@ -81,16 +81,11 @@
       close () {
         this.$emit('close');
       },
-      test () {
-        console.log('ok');
-      },
       getMovieDetail (id) {
         movieService.getMovieDetail(id)
           .then(response => {
             this.item = response.data;
             this.youtubeLink = 'https://www.youtube.com/watch?v=' + this.item.videos.results[0].key;
-
-            console.log('item: ', this.item);
           })
           .catch((err) => {
             console.log(err);
