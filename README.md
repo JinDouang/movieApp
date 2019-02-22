@@ -30,6 +30,9 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 
+# clear mobile application and npm install
+./clear.sh
+
 # build and start for application using Android
 ./scriptAndroid.sh (make sure your android device is plugged into your computer)
 
