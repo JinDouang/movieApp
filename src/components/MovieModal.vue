@@ -5,10 +5,10 @@
                  aria-describedby="modalDescription">
                 <header class="comp-modal-container-header" id="modalTitle">
                     <img :src="imgUrl + item.backdrop_path" />
-                    <button type="button" class="comp-modal-container-header-close" @click="close"
+                    <div class="comp-modal-container-header-close" @click="close"
                             aria-label="Close modal">
                         <ion-icon name="close"></ion-icon>
-                    </button>
+                    </div>
                 </header>
                 <section class="comp-modal-container-body" id="modalDescription">
                     <div class="comp-modal-container-body-genre">
@@ -130,8 +130,7 @@
                     top: -5px;
                     right: -5px;
                     ion-icon {
-                        border: 2px solid rgba(146, 137, 137, 0.82);
-                        border-radius: 25px;
+                        border: none;
                         font-size: $title-size;
                         color: $white;
                     }
